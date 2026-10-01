@@ -1,138 +1,255 @@
-# 🛡️ PHISHGUARD: Real-Time Phishing Detection Extension
+# 🛡️ WebSentinel
 
-PHISHGUARD is a cutting-edge browser extension designed to protect users from phishing attacks and malicious websites in real-time. With its sleek cyberpunk-inspired design and advanced threat detection capabilities, PHISHGUARD empowers users to browse the web safely and confidently.
+### Real-Time Browser Threat Protection
 
----
+WebSentinel is a lightweight Chrome browser extension designed to help protect users from phishing and malicious websites by monitoring web navigation and analyzing URLs through threat intelligence.
 
-## 🌟 Features
-
-✅ **Real-Time URL Scanning** – Automatically scans URLs using the VirusTotal API to detect malicious or suspicious sites.
-
-✅ **Dynamic Blocking** – Blocks access to flagged websites and redirects users to a secure warning page.
-
-✅ **User-Friendly Popup** – A modern popup interface allows users to toggle protection, view status, and refresh updates.
-
-✅ **Crowdsourced Reporting** – Users can report phishing sites, contributing to a community-driven database of threats.
-
-✅ **Color-Coded Warnings** – Provides clear, visually appealing warnings (🔴 red for malicious, 🟡 yellow for suspicious, 🟢 green for safe).
-
-✅ **Lightweight & Optimized** – Minimal resource usage ensures smooth performance without slowing down your browsing experience.
+The project provides real-time URL security checks, threat-based blocking, and a modern security-focused browser interface.
 
 ---
 
-## 🚀 Installation
+## 🚀 Features
 
-### 1️⃣ From Chrome Web Store  
-- Visit the PHISHGUARD page on the Chrome Web Store.  
-- Click **"Add to Chrome"** and follow the prompts to install the extension.
+- 🔍 **Real-Time URL Scanning**  
+  Monitors browser navigation and analyzes URLs for potential threats.
 
-### 2️⃣ From Source Code  
-```bash
- git clone https://github.com/th-shivam/phishguard.git
+- 🛡️ **Threat Detection**  
+  Uses VirusTotal threat intelligence to identify malicious and suspicious URLs.
+
+- 🚫 **Dynamic Website Blocking**  
+  Flagged websites can be blocked and redirected to a dedicated security warning page.
+
+- ⚡ **Lightweight Browser Extension**  
+  Built using Chrome Extension Manifest V3 without requiring a separate backend server.
+
+- 🎨 **Modern Security UI**  
+  Includes a redesigned WebSentinel popup with interactive animations and security status indicators.
+
+- 🔄 **Protection Toggle**  
+  Users can enable or disable browser protection directly from the extension popup.
+
+- 📊 **Security Status**  
+  Displays the current protection state and detection engine status.
+
+---
+
+## 🧠 How WebSentinel Works
+
+```text
+              User Opens a Website
+                       │
+                       ▼
+              Browser Navigation
+                       │
+                       ▼
+             WebSentinel Extension
+                       │
+                       ▼
+                URL Analysis
+                       │
+                       ▼
+             VirusTotal Intelligence
+                       │
+              ┌────────┴────────┐
+              ▼                 ▼
+            SAFE          SUSPICIOUS /
+                              MALICIOUS
+              │                 │
+              ▼                 ▼
+        Continue Browsing   Block / Warn
+                                │
+                                ▼
+                         Security Warning
 ```
-- Open Chrome and navigate to `chrome://extensions/`.
-- Enable **Developer Mode** (toggle in the top-right corner).
-- Click **Load Unpacked** and select the cloned repository folder.
-- PHISHGUARD will now appear in your extensions list!
+
+### Detection Flow
+
+1. The browser navigates to a URL.
+2. WebSentinel monitors the navigation event.
+3. The URL is analyzed using VirusTotal threat intelligence.
+4. The returned threat information is evaluated.
+5. Safe URLs can continue normally.
+6. Suspicious or malicious URLs can be blocked.
+7. The user is redirected to a security warning page.
 
 ---
 
-## 🛠️ How It Works
+## 🏗️ Project Structure
 
-1. **URL Monitoring** – The background script monitors all navigation events in the browser.
-2. **Threat Analysis** – Each URL is sent to the VirusTotal API for real-time scanning.
-3. **Blocking Malicious Sites** – If a URL is flagged as malicious or suspicious, it is blocked, and the user is redirected to a secure warning page.
-4. **User Interaction** – The popup provides real-time status updates and allows users to toggle protection or refresh the state.
-
----
-
-## 🎨 Design Highlights
-
-🌌 **Cyberpunk Theme** – A futuristic design with glowing neon accents and smooth animations.  
-⚡ **Interactive Animations** – Buttons pulse, indicators glow, and transitions are seamless.  
-📱 **Responsive Layout** – Looks great on all screen sizes, ensuring a consistent user experience.  
-
----
-
-## 📊 Impact
-
-🌍 **Social** – Protects users from phishing scams, identity theft, and financial fraud.  
-💰 **Economic** – Reduces costs associated with cybercrime and enhances business security.  
-♻️ **Environmental** – Optimized for energy efficiency, minimizing resource usage.  
+```text
+WebSentinal/
+│
+├── background.js          # Background service worker
+├── blocked.html           # Security warning page
+├── content.js             # Content script
+├── manifest.json          # Chrome Manifest V3 configuration
+├── rules.json             # Declarative network rules
+│
+├── popup/
+│   ├── popup.html         # Extension popup interface
+│   ├── popup.css          # Popup styling and animations
+│   └── popup.js           # Popup functionality
+│
+├── icons/                 # Extension icons
+│
+└── static/                # Static assets
+```
 
 ---
 
-## 🔧 Development Setup
+## 🛠️ Technologies Used
 
-### Prerequisites
-- **Node.js** (optional, for local testing)
-- **Chrome Browser** (or other supported browsers like Firefox)
-- **VirusTotal API Key** (for URL scanning)
-
-### Steps
-1. Obtain a free API key from **VirusTotal**.
-2. Replace `YOUR_VIRUSTOTAL_API_KEY` in `background.js` with your actual API key.
-3. Run the extension locally by following the **Installation** steps above.
-
----
-
-## 🤝 Contributing
-
-We welcome contributions from the community! Here’s how you can help:
-
-📌 **Report Bugs** – Open an issue on GitHub if you encounter any problems.  
-💡 **Suggest Features** – Share your ideas for new features or improvements.  
-🔧 **Submit PRs** – Fork the repository, make your changes, and submit a pull request.  
-
-Please adhere to our **Code of Conduct** when contributing.
+| Technology | Purpose |
+|---|---|
+| HTML5 | Extension interface |
+| CSS3 | UI, animations and visual effects |
+| JavaScript | Extension logic |
+| Chrome Extension APIs | Browser integration |
+| Manifest V3 | Extension architecture |
+| VirusTotal API | URL threat intelligence |
+| Chrome Storage API | Protection state management |
+| Declarative Net Request | Network blocking |
 
 ---
 
-## 📜 License
+## 🔐 VirusTotal API Configuration
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+WebSentinel requires a VirusTotal API key for URL threat analysis.
 
----
+### Step 1 — Obtain an API Key
 
-## 🙌 Acknowledgments
+Create or access your VirusTotal account and obtain an API key.
 
-🔍 **VirusTotal** – For providing the powerful API used for URL scanning.  
-🌐 **Chrome Extensions Team** – For their excellent documentation and support for Manifest V3.  
-🛠️ **Open Source Community** – For inspiration and resources that helped shape this project.  
+### Step 2 — Configure the Extension
 
----
+Open:
 
-## 📢 Feedback & Support
+```text
+background.js
+```
 
-💌 **Email:** [anotnet.shivam@gmail.com](mailto:anotnet.shivam@gmail.com)  
-🐦 **Twitter:** [@PhishGuardApp](https://twitter.com/dreamyshivam)  
-📌 **GitHub Issues:** Open an issue in this repository.  
+Locate the VirusTotal API key configuration and replace the placeholder with your own key.
 
----
+**Never commit your real API key to a public GitHub repository.**
 
-## 🌐 Stay Safe Online
-
-With **PHISHGUARD**, you’re taking a proactive step toward protecting yourself and others from online threats. Together, we can create a safer internet for everyone. 💻✨
+For a production implementation, the API key should be handled through a secure architecture rather than being exposed directly inside a browser extension.
 
 ---
 
-## 📸 Screenshots
+## 🌐 Installation
 
-### 🖥️ Popup Interface  
-![Popup Interface](icons/pop_up.png)
+### Option 1 — Load the Extension Locally
 
-  
+Clone the repository:
 
-### 🚫 Blocked Page  
-![Blocked Page](icons/blocked_page.png)  
+```bash
+git clone https://github.com/VIKRAMADHITHAN1/WebSentinal.git
+```
+
+Open Chrome:
+
+```text
+chrome://extensions/
+```
+
+Then:
+
+1. Enable **Developer mode**.
+2. Click **Load unpacked**.
+3. Select the cloned `WebSentinal` folder.
+4. The extension will appear in your Chrome extensions list.
+5. Pin WebSentinel to the browser toolbar.
 
 ---
 
-## 📣 Follow Us
+## ⚙️ Development
 
-⭐ **Star this repository** to show your support!  
-🔗 **Share with friends** who care about online safety.  
-📢 **Spread the word** about PHISHGUARD on social media.  
+No Node.js or Python server is required for the current browser-extension implementation.
 
-Thank you for choosing **PHISHGUARD**! Together, we can fight phishing and make the web a safer place. 🌍🛡️
+The project runs directly as a Chrome Manifest V3 extension.
 
+After modifying extension files:
+
+1. Open `chrome://extensions/`
+2. Locate WebSentinel.
+3. Click **Reload**.
+4. Open the extension popup again.
+
+---
+
+## 🎨 Interface
+
+WebSentinel uses a modern cybersecurity-focused interface featuring:
+
+- Glassmorphism-inspired components
+- Security status indicators
+- Interactive hover effects
+- Animated security shield
+- Mouse-responsive 3D interaction
+- Protection status controls
+- Clean dark security theme
+
+---
+
+## 🔒 Security Considerations
+
+WebSentinel is designed as a cybersecurity learning and prototype project.
+
+Important considerations:
+
+- Do not expose private API keys in public repositories.
+- Do not test the extension against real malicious websites.
+- Use controlled and authorized environments for security testing.
+- Threat intelligence results may change over time.
+- External threat intelligence does not guarantee detection of every malicious website.
+
+---
+
+## 🚧 Future Improvements
+
+Future versions can extend WebSentinel with:
+
+- 🤖 Local machine-learning based phishing detection
+- 🔬 URL feature extraction
+- 🧠 Zero-day and previously unseen phishing detection
+- 📊 Security analytics dashboard
+- 📝 Threat history and reporting
+- 🌐 Support for additional browsers
+- ⚡ Improved caching and performance
+- 🔐 Secure backend architecture for API management
+- 📈 Threat statistics and visualization
+
+---
+
+## 🎯 Project Objective
+
+The goal of WebSentinel is to provide an accessible browser-level security layer that helps users identify potentially dangerous websites before interacting with them.
+
+The project combines browser extension technologies with external threat intelligence to create a practical real-time web security prototype.
+
+---
+
+## 👨‍💻 Author
+
+**Vikramadhithan S**
+
+Computer Science and Engineering
+
+GitHub:  
+https://github.com/VIKRAMADHITHAN1
+
+---
+
+## 📄 License
+
+This project is intended for educational, research, and demonstration purposes.
+
+Refer to the repository license for applicable usage and distribution terms.
+
+---
+
+## ⭐ Support
+
+If you find WebSentinel useful, consider giving the repository a ⭐ on GitHub.
+
+**WebSentinel — Browse smarter. Stay protected. 🛡️**

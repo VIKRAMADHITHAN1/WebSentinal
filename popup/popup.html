@@ -1,34 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PHISHGUARD</title>
-  <link rel="stylesheet" href="../static/css/styles.css">
-  <link rel="stylesheet" href="popup.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WEBSENTINEL</title>
+
+    <link rel="stylesheet" href="popup.css">
 </head>
+
 <body class="popup-body">
-  <div class="popup-container">
-    <header>
-      <img src="../static/images/logo.png" alt="PHISHGUARD Logo" class="logo" style="animation: none;  margin-top: 50px;">
-      <h1>PHISHGUARD</h1>
-      <p>Real-Time Phishing Detection</p>
-    </header>
-    <main>
-      <section class="status-section">
-        <h2>Status</h2>
-        <div id="status-indicator" class="indicator green"></div>
-        <p id="status-message">Protection is active.</p>
-      </section>
-      <section class="actions-section">
-        <button id="toggle-protection" class="action-button neon-button">Stop Protection</button>
-        <button id="refresh-button" class="action-button neon-button">Refresh</button>
-      </section>
+
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="popup-container" id="tilt-card">
+
+        <!-- Header -->
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-icon">
+                    ◈
+                </div>
+
+                <div>
+                    <h1>WEBSENTINEL</h1>
+                    <span>Browser Threat Protection</span>
+                </div>
+            </div>
+
+            <div class="live-status">
+                <span class="live-dot"></span>
+                LIVE
+            </div>
+        </header>
+
+
+        <!-- Security Shield -->
+        <section class="security-section">
+
+            <div class="shield-wrapper" id="shield">
+
+                <div class="shield-ring ring-one"></div>
+                <div class="shield-ring ring-two"></div>
+
+                <div class="shield">
+                    <div class="shield-inner">
+                        <span class="shield-symbol">✓</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="protection-title">
+                <h2 id="protection-title">PROTECTED</h2>
+
+                <p id="status-message">
+                    Real-time web protection is active
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- Security Cards -->
+        <section class="security-grid">
+
+            <div class="security-card">
+                <div class="card-icon">🛡</div>
+
+                <div>
+                    <span class="card-label">STATUS</span>
+                    <strong id="status-card">SECURE</strong>
+                </div>
+            </div>
+
+
+            <div class="security-card">
+                <div class="card-icon">◉</div>
+
+                <div>
+                    <span class="card-label">ENGINE</span>
+                    <strong>ACTIVE</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Main Action -->
+        <section class="action-section">
+
+            <button
+                id="toggle-protection"
+                class="protection-button"
+            >
+                <span class="button-icon">◉</span>
+
+                <span id="button-text">
+                    STOP PROTECTION
+                </span>
+
+                <span class="button-arrow">
+                    →
+                </span>
+            </button>
+
+        </section>
+
+
+        <!-- Refresh -->
+        <button
+            id="refresh-button"
+            class="refresh-button"
+        >
+            <span>↻</span>
+            Refresh Security Status
+        </button>
+
+
+        <!-- Footer -->
+        <footer>
+
+            <div class="footer-line"></div>
+
+            <p>
+                WEBSENTINEL
+                <span>•</span>
+                REAL-TIME SECURITY
+            </p>
+
+            <small>
+                Threat intelligence powered protection
+            </small>
+
+        </footer>
+
     </main>
-    <footer>
-      <p>&copy; 2025 PHISHGUARD. All rights reserved.</p>
-    </footer>
-  </div>
-  <script src="popup.js"></script>
+
+
+    <script src="popup.js"></script>
+
 </body>
 </html>

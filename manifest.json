@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "PHISHGUARD",
+  "name": "WEBSENTINEL",
   "version": "1.0",
   "description": "A browser extension to detect phishing sites in real-time.",
   "permissions": [

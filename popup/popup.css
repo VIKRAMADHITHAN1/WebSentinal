@@ -1,154 +1,883 @@
-/* General Styles */
-.popup-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: #00ffea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 400px; /* Fixed height for the popup */
-  width: 350px; /* Fixed width for the popup */
-  overflow: hidden;
+/* =========================================================
+   WEBSENTINEL
+   Premium Browser Security Interface
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
+body {
+    margin: 0;
+}
+
+
+/* =========================================================
+   MAIN POPUP
+   ========================================================= */
+
+.popup-body {
+    width: 380px;
+    height: 560px;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(59, 130, 246, 0.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(139, 92, 246, 0.18),
+            transparent 35%
+        ),
+        #070b14;
+
+    color: #ffffff;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   AMBIENT BACKGROUND
+   ========================================================= */
+
+.ambient {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(50px);
+
+    pointer-events: none;
+
+    opacity: 0.5;
+
+    animation: ambientFloat 8s ease-in-out infinite;
+}
+
+.ambient-one {
+    width: 150px;
+    height: 150px;
+
+    background: rgba(37, 99, 235, 0.25);
+
+    top: -60px;
+    right: -40px;
+}
+
+.ambient-two {
+    width: 130px;
+    height: 130px;
+
+    background: rgba(124, 58, 237, 0.22);
+
+    bottom: -50px;
+    left: -40px;
+
+    animation-delay: -3s;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
 
 .popup-container {
-  text-align: center;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 255, 234, 0.5);
-  width: 100%;
-  animation: fadeIn 1s ease-in-out;
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.07),
+            rgba(255,255,255,0.025)
+        );
+
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        0 25px 70px rgba(0,0,0,0.45);
+
+    transform-style: preserve-3d;
+
+    animation: popupEntrance 0.7s ease-out;
 }
 
-header {
-  margin-bottom: 20px;
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.topbar {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
 }
 
-/* .logo {
-  width: 100px;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 0 10px #00ffea);
-} */
+.brand {
+    display: flex;
 
-h1 {
-  font-size: 1.8rem;
-  color: #00ffea;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 0 10px #00ffea;
-  margin: 0;
+    align-items: center;
+
+    gap: 10px;
 }
 
-p {
-  font-size: 1rem;
-  color: #ffffff;
-  text-shadow: 0 0 5px #00ffea;
-  margin: 5px 0 0;
+.brand-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    font-size: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 8px 25px rgba(37,99,235,0.35);
+
+    transform: translateZ(20px);
+
+    transition: 0.3s ease;
 }
 
-/* Status Section */
-.status-section {
-  margin-bottom: 30px;
+.brand-icon:hover {
+    transform:
+        translateZ(30px)
+        rotate(8deg)
+        scale(1.08);
 }
 
-#status-indicator {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin: 15px auto;
-  box-shadow: 0 0 20px rgba(0, 255, 234, 0.8);
-  transition: all 0.3s ease;
+.brand h1 {
+    font-size: 15px;
+
+    letter-spacing: 1.8px;
+
+    font-weight: 800;
 }
 
-.indicator.green {
-  background: #28a745;
-  box-shadow: 0 0 20px #28a745;
+.brand span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 8px;
+
+    color: #8490a5;
+
+    letter-spacing: 0.7px;
 }
 
-.indicator.yellow {
-  background: #ffc107;
-  box-shadow: 0 0 20px #ffc107;
+.live-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: #5ee7a5;
+
+    padding: 6px 9px;
+
+    border-radius: 20px;
+
+    background: rgba(34,197,94,0.08);
+
+    border: 1px solid rgba(34,197,94,0.18);
 }
 
-#status-message {
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin-top: 10px;
-  animation: fadeInText 1s ease-in-out;
+.live-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #4ade80;
+
+    box-shadow:
+        0 0 8px #4ade80;
+
+    animation: livePulse 1.5s infinite;
 }
 
-/* Actions Section */
-.actions-section {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
+
+/* =========================================================
+   SECURITY SECTION
+   ========================================================= */
+
+.security-section {
+    text-align: center;
+
+    margin-top: 4px;
+    margin-bottom: 18px;
 }
 
-.action-button {
-  position: relative;
-  padding: 12px 25px;
-  font-size: 1rem;
-  color: #00ffea;
-  background: transparent;
-  border: 2px solid #00ffea;
-  border-radius: 10px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.shield-wrapper {
+    width: 150px;
+    height: 150px;
+
+    margin: auto;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    perspective: 600px;
+
+    transition: transform 0.15s ease-out;
+
+    transform-style: preserve-3d;
 }
 
-.action-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #00ffea;
-  z-index: -1;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+
+/* =========================================================
+   SHIELD
+   ========================================================= */
+
+.shield {
+    width: 88px;
+    height: 102px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    clip-path: polygon(
+        50% 0%,
+        91% 16%,
+        87% 65%,
+        70% 84%,
+        50% 100%,
+        30% 84%,
+        13% 65%,
+        9% 16%
+    );
+
+    background:
+        linear-gradient(
+            145deg,
+            #2563eb,
+            #4f46e5 50%,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 0 30px rgba(79,70,229,0.45);
+
+    transform:
+        translateZ(35px)
+        rotateX(4deg);
+
+    transition: 0.3s ease;
 }
 
-.action-button:hover::before {
-  transform: scaleX(1);
+.shield::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 3px;
+
+    clip-path: inherit;
+
+    background: #0b1020;
 }
 
-.action-button:hover {
-  color: #000;
+.shield-inner {
+    position: relative;
+
+    z-index: 2;
+
+    width: 62px;
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    clip-path: inherit;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37,99,235,0.35),
+            rgba(124,58,237,0.25)
+        );
+
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
-/* Footer */
+.shield-symbol {
+    font-size: 32px;
+
+    font-weight: 700;
+
+    color: #67e8f9;
+
+    text-shadow:
+        0 0 20px rgba(103,232,249,0.8);
+
+    animation: shieldGlow 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ROTATING RINGS
+   ========================================================= */
+
+.shield-ring {
+    position: absolute;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(59,130,246,0.22);
+
+    pointer-events: none;
+}
+
+.ring-one {
+    width: 135px;
+    height: 135px;
+
+    animation:
+        rotateRing 12s linear infinite;
+}
+
+.ring-two {
+    width: 112px;
+    height: 112px;
+
+    border-style: dashed;
+
+    border-color: rgba(139,92,246,0.28);
+
+    animation:
+        rotateRingReverse 9s linear infinite;
+}
+
+.shield-ring::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #60a5fa;
+
+    box-shadow:
+        0 0 10px #60a5fa;
+
+    top: 5px;
+    left: 50%;
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.protection-title h2 {
+    margin-top: 5px;
+
+    font-size: 20px;
+
+    letter-spacing: 2.5px;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #67e8f9
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.protection-title p {
+    margin-top: 5px;
+
+    font-size: 10px;
+
+    color: #8994a8;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   SECURITY CARDS
+   ========================================================= */
+
+.security-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+}
+
+.security-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 12px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.065),
+            rgba(255,255,255,0.025)
+        );
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.18);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+
+    transform-style: preserve-3d;
+}
+
+.security-card:hover {
+    transform:
+        translateY(-4px)
+        translateZ(10px);
+
+    border-color:
+        rgba(96,165,250,0.35);
+
+    background:
+        rgba(59,130,246,0.09);
+}
+
+.card-icon {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        rgba(59,130,246,0.12);
+
+    color: #60a5fa;
+
+    font-size: 14px;
+}
+
+.card-label {
+    display: block;
+
+    font-size: 7px;
+
+    color: #667085;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 2px;
+}
+
+.security-card strong {
+    font-size: 10px;
+
+    color: #d8dee9;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   MAIN BUTTON
+   ========================================================= */
+
+.action-section {
+    margin-bottom: 9px;
+}
+
+.protection-button {
+    width: 100%;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #2563eb,
+            #4f46e5,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 10px 25px rgba(79,70,229,0.28);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.protection-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.22),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+}
+
+.protection-button:hover::before {
+    left: 140%;
+}
+
+.protection-button:hover {
+    transform:
+        translateY(-2px)
+        scale(1.01);
+
+    box-shadow:
+        0 15px 35px rgba(79,70,229,0.40);
+}
+
+.protection-button:active {
+    transform: scale(0.98);
+}
+
+.button-icon {
+    font-size: 9px;
+}
+
+.button-arrow {
+    position: absolute;
+
+    right: 14px;
+
+    font-size: 15px;
+
+    transition: transform 0.25s ease;
+}
+
+.protection-button:hover .button-arrow {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   REFRESH
+   ========================================================= */
+
+.refresh-button {
+    width: 100%;
+
+    height: 30px;
+
+    border: 1px solid rgba(255,255,255,0.07);
+
+    border-radius: 9px;
+
+    background: rgba(255,255,255,0.025);
+
+    color: #778298;
+
+    cursor: pointer;
+
+    font-size: 8px;
+
+    letter-spacing: 0.4px;
+
+    transition: 0.25s ease;
+}
+
+.refresh-button span {
+    font-size: 13px;
+
+    margin-right: 5px;
+}
+
+.refresh-button:hover {
+    color: #b9c4d6;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    border-color:
+        rgba(96,165,250,0.22);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
 footer {
-  margin-top: 25px;
-  font-size: 0.9rem;
-  color: #ffffff;
-  text-shadow: 0 0 5px #00ffea;
+    text-align: center;
+
+    margin-top: 13px;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-} 
+.footer-line {
+    width: 55px;
+    height: 1px;
 
-@keyframes fadeInText {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+    margin: 0 auto 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #3b82f6,
+            transparent
+        );
+}
+
+footer p {
+    font-size: 7px;
+
+    color: #687387;
+
+    letter-spacing: 1.2px;
+}
+
+footer p span {
+    color: #3b82f6;
+
+    margin: 0 4px;
+}
+
+footer small {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 7px;
+
+    color: #3e4859;
+}
+
+
+/* =========================================================
+   INACTIVE STATE
+   ========================================================= */
+
+.popup-container.inactive .shield {
+    background:
+        linear-gradient(
+            145deg,
+            #64748b,
+            #475569
+        );
+
+    box-shadow:
+        0 0 25px rgba(100,116,139,0.25);
+}
+
+.popup-container.inactive .shield-symbol {
+    color: #fbbf24;
+
+    text-shadow:
+        0 0 15px rgba(251,191,36,0.5);
+}
+
+.popup-container.inactive .live-dot {
+    background: #fbbf24;
+
+    box-shadow:
+        0 0 8px #fbbf24;
+}
+
+.popup-container.inactive .live-status {
+    color: #fbbf24;
+
+    background:
+        rgba(251,191,36,0.07);
+
+    border-color:
+        rgba(251,191,36,0.15);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes popupEntrance {
+
+    from {
+        opacity: 0;
+        transform:
+            scale(0.94)
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+@keyframes livePulse {
+
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.45;
+        transform: scale(0.65);
+    }
+}
+
+@keyframes shieldGlow {
+
+    0%, 100% {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes rotateRing {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateRingReverse {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes ambientFloat {
+
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(15px, -12px);
+    }
 }
